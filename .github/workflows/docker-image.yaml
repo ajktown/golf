@@ -7,9 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -26,16 +24,16 @@ jobs:
 
     - name: Build the Docker image for PR
       if: github.event_name == 'pull_request'
-      run: docker build . --file Dockerfile --tag ajktown/golf:pr${{ github.event.pull_request.number }}
+      run: docker buildx build --platform linux/arm64 --file Dockerfile --tag ajktown/golf:pr${{ github.event.pull_request.number }} .
 
     - name: Push the Docker image for PR
       if: github.event_name == 'pull_request'
-      run: docker push ajktown/golf:pr${{ github.event.pull_request.number }}
+      run: docker buildx build --platform linux/arm64 --file Dockerfile --tag ajktown/golf:pr${{ github.event.pull_request.number }} --push .
 
     - name: Build the Docker image as latest
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      run: docker build . --file Dockerfile --tag ajktown/golf:latest
+      run: docker buildx build --platform linux/arm64 --file Dockerfile --tag ajktown/golf:latest .
 
     - name: Push the Docker image as latest
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      run: docker push ajktown/golf:latest
+      run: docker buildx build --platform linux/arm64 --file Dockerfile --tag ajktown/golf:latest --push .
