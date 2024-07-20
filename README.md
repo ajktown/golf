@@ -85,7 +85,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ### Getting Started
 
 #### Run api server
-The Wordnote application depends on the ajktown-api server.
+The Golf - AJK Town application depends on the ajktown-api server.
 Please install it first. https://github.com/ajktown/api.
 
 
