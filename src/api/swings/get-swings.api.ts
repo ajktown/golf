@@ -20,7 +20,7 @@ interface GetSwingsApiResDTO {
   swings: ISwing[];
 }
 
-const rawData: ISwing[] = [
+const normalFullSwings: ISwing[] = [
   {
     club: "Driver",
     stanceDistance: "Normal",
@@ -134,6 +134,28 @@ const rawData: ISwing[] = [
     total: 115,
   },
   {
+    club: "56 Wedge",
+    stanceDistance: "Normal",
+    swingType: "Full Swing",
+    grip: "+1",
+    carry: 100,
+    total: 100,
+  },
+
+  {
+    club: "60 Wedge",
+    stanceDistance: "Normal",
+    swingType: "Full Swing",
+    grip: "+1",
+    carry: 85,
+    total: 85,
+  },
+];
+/**
+ * For my high apex short shots
+ */
+const chipShotFullSwings: ISwing[] = [
+  {
     club: "52 Wedge",
     stanceDistance: "Short",
     swingType: "Full Swing",
@@ -143,27 +165,11 @@ const rawData: ISwing[] = [
   },
   {
     club: "56 Wedge",
-    stanceDistance: "Normal",
-    swingType: "Full Swing",
-    grip: "+1",
-    carry: 100,
-    total: 100,
-  },
-  {
-    club: "56 Wedge",
     stanceDistance: "Short",
     swingType: "Full Swing",
     grip: "-4",
     carry: 35,
     total: 40,
-  },
-  {
-    club: "60 Wedge",
-    stanceDistance: "Normal",
-    swingType: "Full Swing",
-    grip: "+1",
-    carry: 85,
-    total: 85,
   },
   {
     club: "60 Wedge",
@@ -176,5 +182,6 @@ const rawData: ISwing[] = [
 ];
 
 export const getSwingsApi = (): GetSwingsApiResDTO => {
-  return { swings: rawData };
+  const data = [...normalFullSwings, ...chipShotFullSwings];
+  return { swings: data };
 };

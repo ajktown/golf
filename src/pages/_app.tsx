@@ -6,8 +6,7 @@ import { RecoilRoot } from "recoil";
 import { axiosResponseSuccessLambda } from "@/lambdas/axios-response-success.lambda";
 import { axiosResponseErrorLambda } from "@/lambdas/axios-response-error.lambda";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import { useIsAppBooted } from "@/hooks/app/use-is-app-booted.hook";
-import StyledBackdrop from "@/organisms/StyledBackdrop";
+
 import { OauthConst } from "@/constants/oauth.constant";
 
 axios.defaults.withCredentials = true;
@@ -23,8 +22,6 @@ axios.interceptors.response.use(
 );
 
 const AppBody = ({ Component, pageProps }: AppProps) => {
-  if (!useIsAppBooted()) return <StyledBackdrop />;
-
   return <Component {...pageProps} />;
 };
 
