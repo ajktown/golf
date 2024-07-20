@@ -34,8 +34,7 @@ const NumberPad: FC<Props> = ({ input, setInput }) => {
           setInput(input * -1);
           break;
         default:
-          const newInput = input * 10 + parseInt(button);
-          setInput(newInput);
+          setInput(input * 10 + parseInt(button));
       }
     },
     [input, setInput],
@@ -45,7 +44,12 @@ const NumberPad: FC<Props> = ({ input, setInput }) => {
     <Grid container spacing={1} style={{ maxWidth: "200px" }}>
       {buttons.map((button) => (
         <Grid item xs={4} key={button}>
-          <Button variant="contained" fullWidth onClick={() => onClick(button)}>
+          <Button
+            variant="contained"
+            fullWidth
+            onClick={() => onClick(button)}
+            disabled={button === "*"}
+          >
             {button}
           </Button>
         </Grid>

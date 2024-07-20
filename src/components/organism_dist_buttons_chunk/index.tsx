@@ -1,6 +1,6 @@
 import { getSwingsApi, ISwing } from "@/api/swings/get-swings.api";
 import StyledTextButtonAtom from "@/atoms/StyledTextButton";
-import { Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import { FC, Fragment, useCallback, useEffect, useState } from "react";
 import NumberPad from "../number-pad";
 
@@ -46,15 +46,27 @@ const DistButtonChunk: FC = () => {
   }, [data, input]);
 
   return (
-    <Stack>
-      <NumberPad input={input} setInput={setInput} />
+    <Stack alignItems={"center"} p={2}>
       {input}
+      <Box p={1} />
+      <NumberPad input={input} setInput={setInput} />
       {selectedSwings.map((swing) => (
         <Fragment
           key={swing.club + swing.grip + swing.stanceDistance + swing.swingType}
         >
           <Typography>
-            {"Club: " + swing.club + " Distance: " + swing.total}
+            {"Club: "}
+            <b>{swing.club}</b>
+            {" Grip: "}
+            <b>{swing.grip}</b>
+            {" Stance: "}
+            <b>{swing.stanceDistance}</b>
+            {" Carry (Distance): "}
+            <b>
+              {swing.carry + " "} {"(" + swing.total + ")"} {}
+            </b>
+            {" Missing: "}
+            <b>{input - swing.total}</b>
           </Typography>
         </Fragment>
       ))}
