@@ -24,16 +24,16 @@ jobs:
 
     - name: Build the Docker image for PR
       if: github.event_name == 'pull_request'
-      run: docker buildx build --platform linux/arm64 --file Dockerfile --tag ajktown/golf:pr${{ github.event.pull_request.number }} .
+      run: docker build --platform linux/arm64 --file Dockerfile --tag ajktown/golf:pr${{ github.event.pull_request.number }} .
 
     - name: Push the Docker image for PR
       if: github.event_name == 'pull_request'
-      run: docker buildx build --platform linux/arm64 --file Dockerfile --tag ajktown/golf:pr${{ github.event.pull_request.number }} --push .
+      run: docker build --platform linux/arm64 --file Dockerfile --tag ajktown/golf:pr${{ github.event.pull_request.number }} --push .
 
     - name: Build the Docker image as latest
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      run: docker buildx build --platform linux/arm64 --file Dockerfile --tag ajktown/golf:latest .
+      run: docker build --platform linux/arm64 --file Dockerfile --tag ajktown/golf:latest .
 
     - name: Push the Docker image as latest
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      run: docker buildx build --platform linux/arm64 --file Dockerfile --tag ajktown/golf:latest --push .
+      run: docker build --platform linux/arm64 --file Dockerfile --tag ajktown/golf:latest --push .
