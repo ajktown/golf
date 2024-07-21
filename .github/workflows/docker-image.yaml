@@ -2,15 +2,13 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
-
   build:
-
-    runs-on: ubuntu-latest
+    runs-on: arm64v8/ubuntu # Use ARM64 runner
 
     steps:
     - uses: actions/checkout@v4
@@ -26,7 +24,7 @@ jobs:
 
     - name: Build the Docker image for PR
       if: github.event_name == 'pull_request'
-      run: docker build . --file Dockerfile --tag ajktown/golf:pr${{ github.event.pull_request.number }}
+      run: docker build --file Dockerfile --tag ajktown/golf:pr${{ github.event.pull_request.number }} .
 
     - name: Push the Docker image for PR
       if: github.event_name == 'pull_request'
@@ -34,7 +32,7 @@ jobs:
 
     - name: Build the Docker image as latest
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      run: docker build . --file Dockerfile --tag ajktown/golf:latest
+      run: docker build --file Dockerfile --tag ajktown/golf:latest .
 
     - name: Push the Docker image as latest
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'

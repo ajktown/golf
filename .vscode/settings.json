@@ -18,5 +18,14 @@
     "titleBar.inactiveBackground": "#458dd199",
     "titleBar.inactiveForeground": "#e7e7e799"
   },
-  "peacock.color": "#458dd1"
+  "peacock.color": "#458dd1",
+  "cSpell.words": [
+    "Ajktown",
+    "Appbar",
+    "msal",
+    "Naver",
+    "signin",
+    "unclickable",
+    "Wordnote"
+  ]
 }

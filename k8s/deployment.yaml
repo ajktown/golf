@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ajktown-golf
+  namespace: ajktown
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ajktown-golf
+  template:
+    metadata:
+      labels:
+        app: ajktown-golf
+    spec:
+      containers:
+      - name: ajktown-golf
+        image: ajktown/golf:latest
+        ports:
+        - containerPort: 3200
