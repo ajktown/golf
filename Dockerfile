@@ -1,5 +1,5 @@
 ######## ! Build Stage ! #######
-FROM node:18 AS build
+FROM --platform=linux/amd64 node:18 as static-assets
 
 WORKDIR /app
 
