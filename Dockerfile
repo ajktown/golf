@@ -1,5 +1,5 @@
 ######## ! Build Stage ! #######
-FROM node:18 AS build
+FROM --platform=linux/amd64 node:18 AS static-assets
 
 WORKDIR /app
 
@@ -17,7 +17,7 @@ RUN rm -f .env.local
 RUN yarn build
 
 ######## ! Production Stage ! ########
-FROM node:18
+FROM --platform=linux/amd64 node:18
 
 WORKDIR /app
 
