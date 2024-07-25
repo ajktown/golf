@@ -7,8 +7,8 @@ on:
     branches: ["main"]
 
 jobs:
-  build:
-    runs-on: arm64v8/ubuntu # Use ARM64 runner
+  buildx:
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
