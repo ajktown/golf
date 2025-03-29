@@ -4,6 +4,34 @@ import { Box, Stack, Typography } from "@mui/material";
 import { FC, Fragment, useCallback, useEffect, useState } from "react";
 import NumberPad from "../number-pad";
 
+type Key =
+  | "swings"
+  | "teeHeight"
+  | "swingType"
+  | "ballAim"
+  | "stability"
+  | "carry"
+  | "distance"
+  | "ballSpeed"
+  | "launchAngle"
+  | "apex"
+  | "hangTime"
+  | "landingAngle"
+  | "curve"
+  | "offCenter";
+
+type Value =
+  | "string"
+  | "number:0:90"
+  | "number:0:999"
+  | "center"
+  | "left"
+  | "right"
+  | "front"
+  | "back"
+  | "inside"
+  | "outside";
+
 interface NumberValue {
   value: number
   from: number
