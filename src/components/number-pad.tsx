@@ -10,22 +10,22 @@ interface Props {
   onEnter: () => void;
 }
 
-const NumberPad: FC<Props> = ({ input, setInput, onEnter, onReset }) => {
-  const buttons = [
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "Reset",
-    "0",
-    "Enter",
-  ];
+const buttons = [
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "Reset",
+  "0",
+  "Enter",
+];
 
+const NumberPad: FC<Props> = ({ input, setInput, onEnter, onReset }) => {
   const onClick = useCallback(
     (button: string) => {
       switch (button) {
@@ -44,7 +44,7 @@ const NumberPad: FC<Props> = ({ input, setInput, onEnter, onReset }) => {
           setInput(input * 10 + parseInt(button));
       }
     },
-    [input, setInput],
+    [input, setInput, onReset, onEnter],
   );
 
   return (

@@ -1,5 +1,5 @@
 import { Box, Stack, Typography } from "@mui/material";
-import { FC, useCallback,useState } from "react";
+import { FC, useCallback, useState } from "react";
 import NumberPad from "../number-pad";
 
 type Key =
@@ -109,21 +109,28 @@ const DistButtonChunk: FC = () => {
     });
 
     const nextKeyIndex = keyIndex + 1;
-    if (maxKeyIndex < nextKeyIndex) onReset()
+    if (maxKeyIndex < nextKeyIndex) onReset();
     else setIndex(keyIndex + 1);
   }, [keyNow, keyIndex, input, onReset]);
 
   return (
     <Stack alignItems={"center"} p={2}>
-      <Typography>{keyNow + "?: " + input}</Typography>
+      <Typography color="red">{keyNow + "?: " + input}</Typography>
       {/* Show Props */}
       <Stack direction={"row"} spacing={2} p={1}>
-        {keys.map((key) => (
-          <Typography key={key}>{key + `: ${swingProp[key]}`}</Typography>
+        {keys.map((key, i) => (
+          <Typography color={keyIndex === i ? "red" : undefined} key={key}>
+            {key + `: ${swingProp[key]}`}
+          </Typography>
         ))}
       </Stack>
       <Box p={1} />
-      <NumberPad input={input} setInput={setInput} onEnter={onEnter} onReset={onReset}/>
+      <NumberPad
+        input={input}
+        setInput={setInput}
+        onEnter={onEnter}
+        onReset={onReset}
+      />
     </Stack>
   );
 };
